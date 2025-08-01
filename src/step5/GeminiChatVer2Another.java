@@ -17,7 +17,8 @@ public class GeminiChatVer2Another {
         HttpClient client = HttpClient.newHttpClient();
         // https://ai.google.dev/gemini-api/docs/models?hl=ko
         // gemini-2.0-flash, gemini-2.5-flash, gemini-2.0-flash-lite ...
-        String myModel = "gemini-2.0-flash-lite";
+//        String myModel = "gemini-2.0-flash-lite";
+        String myModel = "gemini-2.0-flash";
         // GEMINI API 주소
         String GEMINI_URL = "https://generativelanguage.googleapis.com/v1beta/models/%s:generateContent"
                 .formatted(myModel);
