@@ -1,5 +1,6 @@
 package step4;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class Solution03 {
@@ -25,13 +26,31 @@ public class Solution03 {
 //        }
         // while 1: -> truthy한 값. (true로 판정되는 값) -> java는 무조건 true?
         // for (;;) {}
-        while (true) { // true면 반복한다면서?
-            System.out.print("secret의 뜻이 뭐야? : ");
-            answer = sc.nextLine();
-            if (answer.equals("비밀")) {
-                break; // 반복을 멈춘다
+//        while (true) { // true면 반복한다면서?
+//            System.out.print("secret의 뜻이 뭐야? : ");
+//            answer = sc.nextLine();
+//            if (answer.equals("비밀")) {
+//                break; // 반복을 멈춘다
+//            }
+//        }
+//        System.out.println("맞췄어!");
+
+        Random r = new Random();
+        while (true) {
+            int v = r.nextInt(64); // 0 ~ 63
+            // [
+            // 뒤에 도달하지 않고 루프시키는 없을까?
+            System.out.println("당신이 뽑은 숫자는! " + v);
+            // ]
+            // 여기에 도달하면 멈추는 것.
+            if (v != 4) {
+                continue; // 다음 루프로 진행한다
             }
+            // 4일때만 아래로 도달.
+            break;
+//            if (v == 4) {
+//                break;
+//            }
         }
-        System.out.println("맞췄어!");
     }
 }
