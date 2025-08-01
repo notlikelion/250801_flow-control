@@ -24,5 +24,26 @@ public class Solution05 {
         // 이 자체는 복잡한 구조이기 때문에 이 안에 이 데이터를 저장한 메모리상의 '주소'가 담겨있음
         System.out.println(Arrays.toString(arr));
         // 이중 배열(?)
+
+        // 배열 (Array)
+        // 1. 길이가 정해져 있다 !
+        // 2. 들어가 있는 데이터 타입 모두 동일하다 ! (앞에서 만들때부터 지정하고 간다)
+        // 3. 인덱스(호출하기 위한 호출용 숫자)가 존재한다 (대부분 0에서부터 시작한다)
+        // -> 길이가 정해져있고, 들어가있는 타입이 모두 동일 -> 메모리 최적화
+        // -> 호출, 값 변경을 위한 속도가 빠른 편이다
+        // {0, 0, 0, 0, 0, 0, 0, 0, 0, 0} 10개 자리
+        // int, double, boolean -> 0, false로 기본값이 찹니다
+        // String -> null -> 기본값이 참
+        arr[1] = 100;
+        // {0, 100, 0, 0, 0, 0, 0, 0, 0, 0}
+        System.out.println(Arrays.toString(arr));
+        // [index] -> 0부터 시작. 맨 앞이 0에요.
+        // 맨 끝? -> 전체 길이의 -1.
+//        arr[10] = 100;
+//        System.out.println(Arrays.toString(arr)); // 10은 없음. 9까지 없음.
+//        arr[-1] = 100; // 파이썬 only
+//        arr[-1] -> arr[길이-1] -> 길이 값?
+        arr[arr.length - 1] = 100; // 맨끝에서 -1 왜? -> 0 때문에.
+        System.out.println(Arrays.toString(arr));
     }
 }
