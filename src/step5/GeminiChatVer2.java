@@ -56,7 +56,7 @@ public class GeminiChatVer2 {
             // 이전사항? 어디에다가 저장할까요?
 
             // 여기서 요청을 보낼 예정.
-            String prompt = "%d글자 길이 이하의 스무고개용 띄어쓰기 없는 한글 단어 1개를 과정 없이 결과만 출력해줘.".formatted(rd.nextInt(3, 6)); // 3~5글자 단어
+            String prompt = "%d글자 길이의 스무고개용 띄어쓰기 없는 한글 단어 1개를 과정 없이 결과만 출력해줘.".formatted(rd.nextInt(3, 6)); // 3~5글자 단어
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(URI.create(GEMINI_URL))
                     .headers("Content-Type", "application/json",
