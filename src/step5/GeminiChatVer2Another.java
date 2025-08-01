@@ -74,11 +74,11 @@ public class GeminiChatVer2Another {
                         prevQuestion += ", ";
                     }
                     prompt = """
-                        [%s]에 대해서 상담해줘.
-                        직전에는 [%s] 이러한 대화를 나누었어.
+                        [%s]에 대해서 50자 이내로 상담하는 대답을 일상적인 말투로 해줘.
+                        직전에는 [%s] 이러한 대화를 나누었어. 나눈 대화에 대해서는 언급하지 말고 잠재적으로만 반영해줘.
+                        결과는 50자를 넘지 않았으면 해. 마크다운 쓰지마.
                         """.formatted(userQuestion, prevQuestion);
                 }
-                // 3~5글자 단어
                 HttpRequest request = HttpRequest.newBuilder()
                         .uri(URI.create(GEMINI_URL))
                         .headers("Content-Type", "application/json",
