@@ -6,6 +6,8 @@ public class GeminiChatVer2 {
     public static void main(String[] args) {
         // 반복문, 조건문?
         Scanner sc = new Scanner(System.in); // 반복문 내부에서 계속 사용해줄 scanner 초기화
+        String GEMINI_API_KEY = System.getenv("GEMINI_API_KEY");
+        System.out.println("GEMINI_API_KEY : " + GEMINI_API_KEY);
         while (true) {
             // 계속 반복
             System.out.print("원하시는 명령을 입력해주세요. (시작, 종료) : ");
