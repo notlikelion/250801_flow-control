@@ -19,9 +19,18 @@ public class Solution03 {
         // 반복의 종료가 외부의 조건과 증감과 관련이 있다 -> for
         String answer = "";
         Scanner sc = new Scanner(System.in);
-        while (!answer.equals("비밀")) {
+//        while (!answer.equals("비밀")) {
+//            System.out.print("secret의 뜻이 뭐야? : ");
+//            answer = sc.nextLine();
+//        }
+        // while 1: -> truthy한 값. (true로 판정되는 값) -> java는 무조건 true?
+        // for (;;) {}
+        while (true) { // true면 반복한다면서?
             System.out.print("secret의 뜻이 뭐야? : ");
             answer = sc.nextLine();
+            if (answer.equals("비밀")) {
+                break; // 반복을 멈춘다
+            }
         }
         System.out.println("맞췄어!");
     }
