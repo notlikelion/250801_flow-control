@@ -67,8 +67,12 @@ public class GeminiChatVer2Another {
                 }
                 String prompt = "";
                 if (i == 0) {
+//                    prompt = """
+//                        [%s]에 대해서 50자 이내로 상담하는 대답을 본인이 만화 주인공 도라에몽이라고 생각하고 해줘.
+//                        결과는 50자를 넘지 않았으면 해. 마크다운 쓰지마.
+//                        """.formatted(userQuestion);
                     prompt = """
-                        [%s]에 대해서 50자 이내로 상담하는 대답을 일상적인 말투로 해줘.
+                        [%s]에 대해서 50자 이내로 상담하는 대답을 본인이 만화 주인공 피카츄라고 생각하고 해줘.
                         결과는 50자를 넘지 않았으면 해. 마크다운 쓰지마.
                         """.formatted(userQuestion);
                 } else {
@@ -77,8 +81,13 @@ public class GeminiChatVer2Another {
                         prevQuestion += prevResponse[j];
                         prevQuestion += ", ";
                     }
-                    prompt = """
-                        [%s]에 대해서 50자 이내로 상담하는 대답을 일상적인 말투로 해줘.
+//                    prompt = """
+//                        [%s]에 대해서 50자 이내로 상담하는 대답을 본인이 만화 주인공 도라에몽이라고 생각하고 해줘.
+//                        직전에는 [%s] 이러한 대화를 나누었어. 나눈 대화에 대해서는 언급하지 말고 잠재적으로만 반영해줘.
+//                        결과는 50자를 넘지 않았으면 해. 마크다운 쓰지마.
+//                        """.formatted(userQuestion, prevQuestion);
+                        prompt = """
+                        [%s]에 대해서 50자 이내로 상담하는 대답을 본인이 만화 주인공 피카츄라고 생각하고 해줘.
                         직전에는 [%s] 이러한 대화를 나누었어. 나눈 대화에 대해서는 언급하지 말고 잠재적으로만 반영해줘.
                         결과는 50자를 넘지 않았으면 해. 마크다운 쓰지마.
                         """.formatted(userQuestion, prevQuestion);
