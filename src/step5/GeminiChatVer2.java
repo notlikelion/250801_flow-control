@@ -88,14 +88,19 @@ public class GeminiChatVer2 {
             for (int i = 0; i < 20; i++) {
                 System.out.print((i+1) + "번째 질문을 해주세요! : ");
                 String userQuestion = sc.nextLine();
-                String prevQuestion = "";
-
-                for (int j = 0; j < i; j++) { // 이전 질문 목록을 묶고.
-                    prevQuestion += ", ";
-                    prevQuestion += aiQuestionArr[j];
+                String prompt2 = "";
+                if (i == 0) {
+                    prompt2 = "[%s] 는 정답인 [%s] 에 대한 질문이야. 예/아니오라고 먼저 대답한 뒤에 부가적인 설명을 해줘. 절대로 정답인 [%s]를 언급하지 마. 과정 없이 결과만 출력해줘.".formatted(userQuestion, aiResult, aiResult);
+                } else {
+                    String prevQuestion = "";
+                    for (int j = 0; j < i; j++) { // 이전 질문 목록을 묶고.
+                        prevQuestion += aiQuestionArr[j];
+                        prevQuestion += ", ";
+                    }
+                    System.out.println("이전 질문 : " + prevQuestion);
+                    prompt2 = "[%s] 는 정답인 [%s] 에 대한 질문이야. 예/아니오라고 먼저 대답한 뒤에 부가적인 설명을 해줘. 이전 답변인 [%s]와 답변이 중복된다면 비슷한 질문을 하고 있다고 언급해줘. 절대로 정답인 [%s]를 언급하지 마. 과정 없이 결과만 출력해줘.".formatted(userQuestion, aiResult, prevQuestion, aiResult);
                 }
-
-                String prompt2 = "%s 는 %s 에 대한 질문이야. 이전 답변과 중복되지 않게 예/아니오라고 먼저 대답한 뒤에 부가적인 설명을 해줘. 절대로 정답을 언급하지 마. 과정 없이 결과만 출력해줘. 이전 답변 : %s".formatted(userQuestion, aiResult, prevQuestion); // 3~5글자 단어
+                // 3~5글자 단어
                 HttpRequest request2 = HttpRequest.newBuilder()
                         .uri(URI.create(GEMINI_URL))
                         .headers("Content-Type", "application/json",
@@ -111,7 +116,8 @@ public class GeminiChatVer2 {
                     aiResult2 = response.body()
                             .split("\"text\": \"")[1] // 0, 1, 2....
                             .split("}")[0]
-                            .replace("\\n\"", "")
+                            .replace("\\n", "")
+                            .replace("\"", "")
                             .trim();
                     System.out.println(aiResult2);
                 } catch (Exception e) {
@@ -120,6 +126,8 @@ public class GeminiChatVer2 {
                     // 429 : 키를 너무 많이 쓴 것
                 }
                 System.out.println("AI의 대답 : " + aiResult2);
+                // 이게 빠짐;;;;
+                aiQuestionArr[i] = userQuestion;
             }
         }
     }
