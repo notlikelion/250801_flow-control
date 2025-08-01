@@ -74,7 +74,7 @@ public class GeminiChatVer2 {
                         .split("}")[0]
                         .replace("\\n\"", "")
                         .trim();
-                System.out.println(aiResult);
+//                System.out.println(aiResult); // 답
             } catch (Exception e) {
                 System.err.println(e.getMessage()); // 에러가 날 경우 해당 메시지를 확인 (429? 403?)
                 // 403 : 키를 잘 못넣은거고
@@ -82,7 +82,7 @@ public class GeminiChatVer2 {
             }
             // String twenty = "고양이";
 
-            System.out.println("스무고개 답은 %s입니다.".formatted(aiResult));
+//            System.out.println("스무고개 답은 %s입니다.".formatted(aiResult));
 
             String[] aiQuestionArr = new String[20];
             for (int i = 0; i < 20; i++) {
@@ -97,7 +97,7 @@ public class GeminiChatVer2 {
                         prevQuestion += aiQuestionArr[j];
                         prevQuestion += ", ";
                     }
-                    System.out.println("이전 질문 : " + prevQuestion);
+//                    System.out.println("이전 질문 : " + prevQuestion);
                     prompt2 = """
                         [%s] 는 정답인 [%s] 에 대한 질문이야.
                         예/아니오라고 먼저 대답한 뒤에 부가적인 설명을 해줘.
@@ -125,7 +125,7 @@ public class GeminiChatVer2 {
                             .replace("\\n", "")
                             .replace("\"", "")
                             .trim();
-                    System.out.println(aiResult2);
+//                    System.out.println(aiResult2);
                 } catch (Exception e) {
                     System.err.println(e.getMessage()); // 에러가 날 경우 해당 메시지를 확인 (429? 403?)
                     // 403 : 키를 잘 못넣은거고
@@ -139,6 +139,8 @@ public class GeminiChatVer2 {
                 if (myAnswer.equals(aiResult)) {
                     System.out.println("정답입니다!");
                     break;
+                } else {
+                    System.out.println("오답입니다!");
                 }
                 if (i == 19) { // 20 - 1
                     System.out.println("20번의 기회동안 정답을 못 맞히셨네요!");
