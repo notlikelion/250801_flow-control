@@ -45,5 +45,16 @@ public class Solution05 {
 //        arr[-1] -> arr[길이-1] -> 길이 값?
         arr[arr.length - 1] = 100; // 맨끝에서 -1 왜? -> 0 때문에.
         System.out.println(Arrays.toString(arr));
+        int[] arr4 = new int[10]; // 10개가 있으면... 10개를 다 인덱스로 할당야해?
+        // arr4[0] = 1;
+        // arr4[1] = 2; ...?
+        int[] arr5 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}; // 한 번에 초기화할 수 있는 문법
+        // 주의할 점 : {}다. 왜? 이걸 주의하라고 하죠? 파이썬과 자바스크립트는 이와 유사한 리스트, 자바스크립트 배열을 초기화할 때 []로 한다.
+        System.out.println(Arrays.toString(arr5));
+
+        String[] arr6 = new String[10]; // ""?
+        System.out.println(Arrays.toString(arr6)); // null... null...
+        arr6[0] = "안녕하세요!";
+        System.out.println(Arrays.toString(arr6));
     }
 }
