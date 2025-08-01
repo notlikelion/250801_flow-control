@@ -98,7 +98,13 @@ public class GeminiChatVer2 {
                         prevQuestion += ", ";
                     }
                     System.out.println("이전 질문 : " + prevQuestion);
-                    prompt2 = "[%s] 는 정답인 [%s] 에 대한 질문이야. 예/아니오라고 먼저 대답한 뒤에 부가적인 설명을 해줘. 이전 답변인 [%s]와 답변이 중복된다면 비슷한 질문을 하고 있다고 언급해줘. 절대로 정답인 [%s]를 언급하지 마. 과정 없이 결과만 출력해줘.".formatted(userQuestion, aiResult, prevQuestion, aiResult);
+                    prompt2 = """
+                        [%s] 는 정답인 [%s] 에 대한 질문이야.
+                        예/아니오라고 먼저 대답한 뒤에 부가적인 설명을 해줘.
+                        이전 답변인 [%s]와 답변이 중복된다면 비슷한 질문을 하고 있다고 언급해줘.
+                        질문은 [%s]라는 걸 명심해.
+                        절대로 정답인 [%s]를 언급하지 마. 과정 없이 결과만 출력해줘.
+                        """.formatted(userQuestion, aiResult, prevQuestion, userQuestion, aiResult);
                 }
                 // 3~5글자 단어
                 HttpRequest request2 = HttpRequest.newBuilder()
@@ -128,6 +134,15 @@ public class GeminiChatVer2 {
                 System.out.println("AI의 대답 : " + aiResult2);
                 // 이게 빠짐;;;;
                 aiQuestionArr[i] = userQuestion;
+                System.out.print("예상되는 답을 입력해주세요 : ");
+                String myAnswer = sc.nextLine();
+                if (myAnswer.equals(aiResult)) {
+                    System.out.println("정답입니다!");
+                    break;
+                }
+                if (i == 19) { // 20 - 1
+                    System.out.println("20번의 기회동안 정답을 못 맞히셨네요!");
+                }
             }
         }
     }
