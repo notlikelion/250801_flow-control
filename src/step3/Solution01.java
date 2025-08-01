@@ -37,7 +37,7 @@ public class Solution01 {
             System.out.println("300mm 초과입니다");
         } else {
             // footSize >= 200 && footSize <= 300
-            // !(footSize < 200) || !(footSize > 300)
+            // !(footSize < 200) || !(footSize > 300) : 논리연산
             System.out.println("신발이 존재합니다");
         }
     }
