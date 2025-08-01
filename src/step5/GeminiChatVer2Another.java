@@ -66,7 +66,10 @@ public class GeminiChatVer2Another {
                 }
                 String prompt = "";
                 if (i == 0) {
-                    prompt = "[%s]에 대해서 상담해줘.".formatted(userQuestion);
+                    prompt = """
+                        [%s]에 대해서 50자 이내로 상담하는 대답을 일상적인 말투로 해줘.
+                        결과는 50자를 넘지 않았으면 해. 마크다운 쓰지마.
+                        """.formatted(userQuestion);
                 } else {
                     String prevQuestion = "";
                     for (int j = 0; j < i; j++) { // 이전 질문 목록을 묶고.
