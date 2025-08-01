@@ -36,6 +36,7 @@ public class Solution02 {
                   break;
               default:
                   System.out.println("그런 사이즈 없습니다.");
+                  // fall through - 하나의 조건을 만족시켰는데 break가 없으면 다른 조건도 다 만족했다고 판정하고 모두 실행시켜버림
           }
     }
 }
