@@ -49,7 +49,7 @@ public class Solution01 {
             } else {
                 System.out.println("잘 오셨어요~ 😍");
             }
-            // 여기에 있으면 위에 조건과 상관없이...
+            // 여기에 있으면 위에 조건과 상관없이 ...
         }
     }
 }
