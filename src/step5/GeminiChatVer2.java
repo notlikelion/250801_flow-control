@@ -56,7 +56,8 @@ public class GeminiChatVer2 {
             // 이전사항? 어디에다가 저장할까요?
 
             // 여기서 요청을 보낼 예정.
-            String prompt = "한글 기준 %d글자 길이의 스무고개용 띄어쓰기 없는 한글 단어 1개를 과정 없이, 마크다운 같은 꾸미는 옵션 없이, 오로지 단어 결과만 출력해줘.".formatted(rd.nextInt(3, 6)); // 3~5글자 단어
+            int answerLength = rd.nextInt(3, 6);
+            String prompt = "한글 기준 %d글자 길이의 스무고개용 띄어쓰기 없는 한글 단어 1개를 과정 없이, 마크다운 같은 꾸미는 옵션 없이, 오로지 단어 결과만 출력해줘.".formatted(answerLength); // 3~5글자 단어
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(URI.create(GEMINI_URL))
                     .headers("Content-Type", "application/json",
@@ -85,6 +86,8 @@ public class GeminiChatVer2 {
 //            System.out.println("스무고개 답은 %s입니다.".formatted(aiResult));
 
             String[] aiQuestionArr = new String[20];
+//            System.out.println("글자수는 %d입니다!".formatted(answerLength));
+            System.out.println("글자수는 %d입니다!".formatted(aiResult.length()));
             for (int i = 0; i < 20; i++) {
                 System.out.print((i+1) + "번째 질문을 해주세요! : ");
                 String userQuestion = sc.nextLine();
@@ -139,11 +142,15 @@ public class GeminiChatVer2 {
                 if (myAnswer.equals(aiResult)) {
                     System.out.println("정답입니다!");
                     break;
+                } else if (myAnswer.equals("포기")) {
+                    System.out.println("아쉽네요!");
+                    System.out.println("정답은 " + aiResult + "입니다!");
                 } else {
                     System.out.println("오답입니다!");
                 }
                 if (i == 19) { // 20 - 1
                     System.out.println("20번의 기회동안 정답을 못 맞히셨네요!");
+                    System.out.println("정답은 : " + aiResult);
                 }
             }
         }
