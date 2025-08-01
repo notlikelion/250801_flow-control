@@ -34,7 +34,7 @@ public class Solution04 {
 //        for (int i = 1; i <= 10; i++) {
 //            sum += i;
 //        }
-        int i = 0;
+//        int i = 0;
 //        for (;;) {
 //            sum += i;
 //            i++;
@@ -44,15 +44,39 @@ public class Solution04 {
 //                break;
 //            }
 //        }
-        while (true) {
-            sum += i;
-            i++;
-            if (i <= 10) {
-                continue;
-            } else {
-                break;
+//        while (true) {
+//            sum += i;
+//            i++;
+//            if (i <= 10) {
+//                continue;
+//            } else {
+//                break;
+//            }
+//        }
+//        System.out.println(sum); // 55
+
+//        String star = "";
+//        for (int i = 0; i < 5; i++) {
+//            star += "*";
+//            System.out.println(star);
+//            // *
+//            // **
+//            // ***
+//            // ****
+//            // *****
+//        }
+//        for (int i = 0; i < 5; i++) {
+        for (int i = 1; i <= 5; i++) {
+//            for (int i = 0; i < 5; i++) {
+            System.out.println(i + "번째 줄");
+//            for (int j = 0; j < 5; j++) {
+//                System.out.print("*");
+//            }
+            for (int j = 0; j < i; j++) {
+                System.out.print("*");
             }
+//            System.out.println(j); // 바깥에서는 안쪽 블록에서 선언된 변수를 사용할 수 없음
+            System.out.println(); // 이렇게 쓰면 그냥 줄바꿈
         }
-        System.out.println(sum); // 55
     }
 }
